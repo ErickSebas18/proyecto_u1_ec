@@ -22,14 +22,14 @@ public class CompraAuto {
 		this.cliente.setNombre(nombre);
 		this.cliente.setApellido(apellido);
 		this.cliente.setNumeroCelular(numeroCelular);
-		
+
 		this.auto.setModelo(modelo);
 		this.auto.setAño(año);
 		this.auto.setPrecio(precio);
-		
+
 		this.fechaCompra = fechaCompra;
-		
-		//Agregando Compra
+
+		// Agregando Compra
 		return "Se ha registrado la compra";
 	}
 
