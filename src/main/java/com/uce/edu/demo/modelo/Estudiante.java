@@ -5,7 +5,7 @@ public class Estudiante {
 	private String cedula;
 	private String nombre;
 	private String apellido;
-
+	
 	// SET Y GET
 	public String getNombre() {
 		return nombre;
@@ -29,6 +29,11 @@ public class Estudiante {
 
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
+	}
+
+	@Override
+	public String toString() {
+		return " [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
 
 	

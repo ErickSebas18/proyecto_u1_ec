@@ -6,7 +6,7 @@ public interface IEstudianteService {
 
 	public void ingresarEstudiante(Estudiante e);
 
-	public Estudiante buscarPorApellido(String cedula);
+	public Estudiante buscarPorApellido(String apellido);
 
 	public void actualizarEstudiante(Estudiante e);
 
