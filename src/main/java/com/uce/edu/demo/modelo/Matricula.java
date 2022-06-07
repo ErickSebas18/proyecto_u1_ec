@@ -33,4 +33,9 @@ public class Matricula {
 		this.materia = materia;
 	}
 
+	@Override
+	public String toString() {
+		return " [numero=" + numero + ", estudiante=" + estudiante + ", materia=" + materia + "]";
+	}
+
 }

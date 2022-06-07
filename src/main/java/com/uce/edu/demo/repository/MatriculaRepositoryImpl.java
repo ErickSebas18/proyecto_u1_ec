@@ -9,30 +9,30 @@ import com.uce.edu.demo.modelo.Matricula;
 public class MatriculaRepositoryImpl implements IMatriculaRepository {
 
 	@Override
-	public void insertar(Matricula e) {
+	public void insertar(Matricula matricula) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha ingresado la matricula");
+		System.out.println("Se ha ingresado la matricula " + matricula);
 	}
 
 	@Override
-	public Matricula buscar(String codigo) {
+	public Matricula buscar(String numero) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha buscado la matricula: " + codigo);
-		return null;
+		System.out.println("Se ha buscado la matricula: " + numero);
+		Matricula matricula = new Matricula();
+		matricula.setNumero("1");
+		return matricula;
 	}
 
 	@Override
-	public void actualizar(Matricula e) {
+	public void actualizar(Matricula matricula) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha actualizado la matricula");
+		System.out.println("Se ha actualizado la matricula " + matricula);
 	}
 
 	@Override
-	public void eliminar(String codigo) {
+	public void eliminar(String numero) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha eliminado la matricula");
+		System.out.println("Se ha eliminado la matricula " + numero);
 	}
-
-	
 
 }
