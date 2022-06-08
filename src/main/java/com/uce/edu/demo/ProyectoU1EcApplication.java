@@ -1,31 +1,27 @@
 package com.uce.edu.demo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.modelo.Estudiante;
-import com.uce.edu.demo.modelo.Materia;
-import com.uce.edu.demo.modelo.Matricula;
-import com.uce.edu.demo.service.IEstudianteService;
-import com.uce.edu.demo.service.IMateriaService;
-import com.uce.edu.demo.service.IMatriculaService;
+import com.uce.edu.demo.banco.service.IDepositoService;
+import com.uce.edu.demo.banco.service.ITransferenciaService;
 
 @SpringBootApplication
 public class ProyectoU1EcApplication implements CommandLineRunner {
 	
 	@Autowired
-	private IMateriaService materiaService;
+	private ITransferenciaService transferenciaService;
 	
 	@Autowired
-	private IMatriculaService matriculaService;
+	private IDepositoService depositoService;
 	
-	@Autowired
-	private IEstudianteService estudianteService;
+	private String co;
+	private String cd;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1EcApplication.class, args);
@@ -34,41 +30,18 @@ public class ProyectoU1EcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Estudiante e = new Estudiante();
-		e.setNombre("Erick");
-		e.setApellido("Chávez");
-		e.setCedula("1726142314");
-		this.estudianteService.ingresarEstudiante(e);
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Digite cuenta de origen:");
+		co = scanner.next();
+		System.out.print("Digite cuenta de destino: ");
+		cd = scanner.next();
+		System.out.println("\nTransferencia");
+		this.transferenciaService.realizarTransferencia(co, cd, new BigDecimal(20));
 		
+		scanner.close();
 		
-		Materia m = new Materia();
-		m.setNombre("Programación Avanzada II");
-		m.setSemestre("Sexto");
-		this.materiaService.insertar(m);
-		this.materiaService.buscar(m.getNombre());
-		m.setSemestre("Quinto");
-		this.materiaService.actualizar(m);
-		this.materiaService.eliminar("Análisis");
-		
-		Materia m2 = new Materia();
-		m2.setNombre("Análisis");
-		m2.setSemestre("Séptimo");
-		
-		List<Materia> l = new ArrayList<Materia>();
-		l.add(m);
-		l.add(m2);
-		
-		
-		Matricula matricula = new Matricula();
-		matricula.setEstudiante(e);
-		matricula.setMateria(l);
-		matricula.setNumero("124240");
-		
-		this.matriculaService.insertar(matricula);
-		this.matriculaService.buscar(matricula.getNumero());
-		matricula.setNumero("1324");
-		this.matriculaService.actualizar(matricula);
-		this.matriculaService.eliminar(matricula.getNumero());
+		System.out.println("\nDeposito");
+		this.depositoService.realizarDeposito(cd, new BigDecimal(30));
 	}
 
 }
