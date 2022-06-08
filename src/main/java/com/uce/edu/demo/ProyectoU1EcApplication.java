@@ -31,7 +31,7 @@ public class ProyectoU1EcApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Digite cuenta de origen:");
+		System.out.print("Digite cuenta de origen: ");
 		co = scanner.next();
 		System.out.print("Digite cuenta de destino: ");
 		cd = scanner.next();
