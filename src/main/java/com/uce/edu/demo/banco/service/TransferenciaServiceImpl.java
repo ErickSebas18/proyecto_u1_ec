@@ -25,17 +25,17 @@ public class TransferenciaServiceImpl implements ITransferenciaService {
 	public void realizarTransferencia(String cuentaOrigen, String cuentaDestingo, BigDecimal monto) {
 		// TODO Auto-generated method stub
 
-		CuentaBancaria cOrigen = this.cuentaBancariaService.buscar(cuentaOrigen);
+		CuentaBancaria cOrigen = this.cuentaBancariaService.buscarCuentaBancaria(cuentaOrigen);
 		BigDecimal saldoOrigen= cOrigen.getSaldo();
 		BigDecimal nuevoSaldoOrigen = saldoOrigen.subtract(monto);
 		cOrigen.setSaldo(nuevoSaldoOrigen);
-		this.cuentaBancariaService.actualizar(cOrigen);
+		this.cuentaBancariaService.actualizarCuentaBancaria(cOrigen);
 		
-		CuentaBancaria cDestino = this.cuentaBancariaService.buscar(cuentaDestingo);
+		CuentaBancaria cDestino = this.cuentaBancariaService.buscarCuentaBancaria(cuentaDestingo);
 		BigDecimal saldoDestino = cDestino.getSaldo();
 		BigDecimal nuevoSaldoDestino = saldoDestino.add(monto);
 		cDestino.setSaldo(nuevoSaldoDestino);
-		this.cuentaBancariaService.actualizar(cDestino);
+		this.cuentaBancariaService.actualizarCuentaBancaria(cDestino);
 		
 		Transferencia t = new Transferencia();
 		t.setNumeroCuentaOrigen(cuentaOrigen);
@@ -45,4 +45,23 @@ public class TransferenciaServiceImpl implements ITransferenciaService {
 		this.transferenciaRepository.insertar(t);
 	}
 
+	@Override
+	public Transferencia buscarTransferencia(String numeroCuentaDestino) {
+		// TODO Auto-generated method stub
+		return this.transferenciaRepository.buscar(numeroCuentaDestino);
+	}
+
+	@Override
+	public void actualizarTransferencia(Transferencia f) {
+		// TODO Auto-generated method stub
+		this.transferenciaRepository.actualizar(f);
+	}
+
+	@Override
+	public void eliminarTransferencia(String numeroCuentaDestino) {
+		// TODO Auto-generated method stub
+		this.transferenciaRepository.eliminar(numeroCuentaDestino);
+	}
+
+	
 }

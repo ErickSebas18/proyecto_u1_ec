@@ -7,4 +7,10 @@ import com.uce.edu.demo.banco.modelo.Deposito;
 public interface IDepositoService {
 
 	public void realizarDeposito(String numeroCuentaDestino, BigDecimal monto);
+	
+	public Deposito buscarDeposito(String numeroCuentaDestino);
+
+	public void actualizarDeposito(Deposito d);
+
+	public void eliminarDeposito(String numeroCuentaDestino);
 }
