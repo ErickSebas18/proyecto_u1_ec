@@ -29,5 +29,4 @@ public class TransaccionTo /*implements Comparable<LocalDateTime>*/{
 		this.monto = monto;
 	}
 	
-	
 }

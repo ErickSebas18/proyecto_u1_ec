@@ -3,9 +3,7 @@ package com.uce.edu.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uce.edu.demo.modelo.Estudiante;
 import com.uce.edu.demo.modelo.Matricula;
-import com.uce.edu.demo.repository.IEstudianteRepository;
 import com.uce.edu.demo.repository.IMatriculaRepository;
 
 @Service
