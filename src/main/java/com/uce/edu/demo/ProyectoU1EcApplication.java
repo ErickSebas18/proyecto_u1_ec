@@ -23,7 +23,7 @@ public class ProyectoU1EcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		BigDecimal interes = this.bancaria.calcularInteres("1213");
+		BigDecimal interes = this.bancaria.calcularInteres("5142");
 		System.out.println(interes);
 		
 	}
