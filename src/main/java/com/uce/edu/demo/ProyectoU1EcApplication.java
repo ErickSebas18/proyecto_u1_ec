@@ -5,34 +5,29 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.tienda.modelo.Cliente;
-import com.uce.edu.demo.tienda.modelo.Vendedor;
-import com.uce.edu.demo.tienda.service.IClienteService;
-import com.uce.edu.demo.tienda.service.IVendedorService;
+import com.uce.edu.demo.modelo.Estudiante;
+import com.uce.edu.demo.modelo.Matricula;
+import com.uce.edu.demo.modelo.ProfesorGeneral;
+import com.uce.edu.demo.modelo.ProfesorMateria;
+import com.uce.edu.demo.service.IMatriculaService;
 
 @SpringBootApplication
 public class ProyectoU1EcApplication implements CommandLineRunner {
 
 	@Autowired
-	private Cliente cliente;
-	
+	private ProfesorGeneral profesorGeneral;
+
 	@Autowired
-	private Cliente cliente2;
-	
+	private ProfesorGeneral profesorGeneral1;
+
 	@Autowired
-	private Cliente cliente3;
-	
+	private ProfesorMateria profesorMateria;
+
 	@Autowired
-	private IClienteService clienteService;
-	
+	private ProfesorMateria profesorMateria1;
+
 	@Autowired
-	private Vendedor vendedor;
-	
-	@Autowired
-	private Vendedor vendedor2;
-	
-	@Autowired
-	private IVendedorService vendedorService;
+	private IMatriculaService matricula;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1EcApplication.class, args);
@@ -41,33 +36,33 @@ public class ProyectoU1EcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-	System.out.println("-------------------------");
-	System.out.println("EJEMPLO PROTOYPE");
-	System.out.println("-------------------------");
-	this.cliente.setNombre("Erick");
-	this.cliente.setApellido("Chávez");
-	this.cliente.setNumeroCedula("145131546");
-	this.cliente.setNumeroCelular("098432146");
-	this.clienteService.insertarCliente(cliente);
-	System.out.println();
-	this.cliente2.setNombre("Andres");
-	this.cliente2.setApellido("García");
-	this.cliente2.setNumeroCedula("613451234");
-	this.cliente2.setNumeroCelular("0916423457");
-	this.clienteService.insertarCliente(cliente2);
-	System.out.println();
-	this.clienteService.insertarCliente(cliente3);
-	
-	System.out.println("-------------------------");
-	System.out.println("EJEMPLO SINGLETON");
-	System.out.println("-------------------------");
-	this.vendedor.setNombre("Carlos");
-	this.vendedor.setApellido("Carrera");
-	this.vendedorService.insertarVendedor(vendedor);
-	System.out.println();
-	this.vendedor2.setNombre("Ana");
-	this.vendedorService.insertarVendedor(vendedor2);
-	
+		System.out.println("EJEMPLO PROTOTYPE");
+		this.profesorGeneral.setNombre("Erick");
+		this.profesorGeneral.setApellido("Garcia");
+		System.out.println(this.profesorGeneral.toString());
+		System.out.println("--------------------------------");
+		System.out.println(this.profesorGeneral1.toString());
+		this.profesorGeneral1.setNombre("Pepe");
+		System.out.println("--------------------------------");
+		System.out.println(this.profesorGeneral.toString());
+
+		System.out.println("--------------------------------");
+		System.out.println(this.profesorGeneral1.toString());
+
+		System.out.println();
+		System.out.println("EJEMPLO PROTOTYPE");
+		this.profesorMateria.setNombre("Daniel");
+		this.profesorMateria.setApellido("Encalada");
+		System.out.println(this.profesorMateria);
+		System.out.println("--------------------------------");
+		System.out.println(this.profesorMateria1);
+
+		Matricula matricula1 = new Matricula();
+		matricula1.setEstudiante(new Estudiante());
+		matricula1.setNumero("1451");
+		System.out.println("--------------------------------");
+		this.matricula.insertar(matricula1);
+
 	}
 
 }

@@ -30,6 +30,6 @@ public class ProfesorMateria {
 
 	@Override
 	public String toString() {
-		return "ProfesorGeneral [nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "ProfesorMateria [nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
 }
